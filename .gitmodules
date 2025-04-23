@@ -1,3 +1,6 @@
 [submodule "libs/config"]
 	path = libs/config
 	url = https://github.com/genogrove/config
+[submodule "libs/data_type"]
+	path = libs/data_type
+	url = https://github.com/genogrove/data_type
