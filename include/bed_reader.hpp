@@ -18,7 +18,7 @@
 
 // genogrove
 #include <file_reader.hpp>
-#include <genogrove/data_type/interval.hpp>
+// #include <genogrove/data_type/interval.hpp>
 
 // zlib
 #include <zlib.h>
@@ -30,7 +30,7 @@
 #include <htslib/kseq.h>
 #include <htslib/kstring.h>
 
-namespace gdt = genogrove::data_type;
+// namespace gdt = genogrove::data_type;
 
 class bed_reader : public file_reader {
 public:

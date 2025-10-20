@@ -11,16 +11,19 @@
 
 // standard
 #include <filesystem>
+#include <memory>
 
 // genogrove
-#include <file_reader.hpp>
-#include <bed_reader.hpp>
-#include <filetype_detector.hpp>
+#include "file_reader.hpp"
+#include "bed_reader.hpp"
+#include "filetype_detector.hpp"
+
+using filepath = std::filesystem::path;
 
 class file_reader_factory{
     public:
         static std::unique_ptr<file_reader> create(
-            const std::filesystem::path& fpath,
+            const filepath& fpath,
             filetype ftype,
             bool is_gzipped);
 };

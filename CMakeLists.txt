@@ -35,13 +35,22 @@ CPMAddPackage(
 )
 
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(HTSLIB REQUIRED )
+pkg_check_modules(HTSLIB REQUIRED htslib)
 
+# sources
+file(GLOB SOURCES src/*.cpp)
 
+add_executable(genogrove_cli ${SOURCES})
+target_include_directories(genogrove_cli PUBLIC ${cxxopts_SOURCE_DIR}/include) # include cxxopts headers
+target_include_directories(genogrove_cli PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/../include/")
+target_include_directories(genogrove_cli PUBLIC "{HTSLIB_INCLUDE_DIRS}") # htslib header files
+target_include_directories(genogrove_cli PUBLIC include) # include genogrove_cli headers
 
-# add genogrove packages
-CPMAddPackage(
+target_link_libraries(genogrove_cli genogrove cxxopts zlibstatic)
+target_link_libraries(genogrove_cli ${HTSLIB_LIBRARIES})
 
+# set the output directory for the executable
+set_target_properties(genogrove_cli PROPERTIES
+        OUTPUT_NAME genogrove
+        RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
 )
-
-

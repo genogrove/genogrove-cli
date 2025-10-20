@@ -19,12 +19,7 @@
 
 
 enum class filetype {
-    BED,
-    BEDGRAPH,
-    GFF,
-    GTF,
-    VCF,
-    UNKNOWN
+    BED, BEDGRAPH, GFF, GTF, VCF, UNKNOWN
 };
 
 class filetype_detector {

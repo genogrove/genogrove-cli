@@ -1,5 +1,5 @@
 /*
- * SPDX-License-Indentifier: MIT
+ * SPDX-License-Identifier: MIT
  *
  * Copyright (c) 2025 Richard A. Schäfer
  *
@@ -11,8 +11,27 @@
 
 // standard
 #include <cstdlib>
+#include <filesystem>
+#include <iostream>
 
 // genogrove
+#include <genogrove/data_type/interval.hpp>
+#include <genogrove/structure/grove/grove.hpp>
 
+// genogrove-cli
+#include <subcall/subcall.hpp>
+#include "file_reader.hpp"
+#include "file_reader_factory.hpp"
+
+// CXXopts
+#include <cxxopts.hpp>
+
+class index : public subcall {
+public:
+    cxxopts::Options parse_args(int argc, char** argv) override;
+    void execute(const cxxopts::ParseResult& args) override;
+    void validate(const cxxopts::ParseResult& args) override;
+
+};
 
 #endif //GENOGROVE_CLI_INDEX_HPP
