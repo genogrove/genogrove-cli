@@ -1,4 +1,45 @@
-name: sync-version.yml
+name: sync version
+
 on:
+  repository_dispatch:
+    types: [sync-version]
 
 jobs:
+  bump-dependencies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: update version in CMakeLists.txt
+        run: |
+          VERSION=${{ github.event.client_payload.version }}
+          sed -i "s/GIT_TAG .*/GIT_TAG ${VERSION}/" CMakeLists.txt
+
+      - name: Commit & push
+        run: |
+          VERSION=${{ github.event.client_payload.version }}
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git checkout -b release-${VERSION}
+          git commit -am "Bump dependencies to ${VERSION}"
+          git push origin release-${VERSION}
+
+      - name: Open PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.PAT }}
+          commit-message: "Bump dependencies to ${{ github.event.client_payload.version }}"
+          branch: release-${{ github.event.client_payload.version }}
+          title: "Release ${{ github.event.client_payload.version }}"
+          body: "Updates dependencies to ${{ github.event.client_payload.version }}"
+
+  integration-tests:
+    needs: bump-dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build & Test
+        run: |
+          cmake -B build -S .
+          cmake --build build
+          ctest --test-dir build
