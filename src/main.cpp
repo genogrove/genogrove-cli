@@ -10,8 +10,6 @@
 #include <subcalls/index.hpp>
 #include <subcalls/intersect.hpp>
 
-
-
 std::unique_ptr<subcalls::subcall> create_subcall(const std::string& subcall) {
     if(subcall == "idx") {
         return std::make_unique<subcalls::index>();
@@ -49,6 +47,13 @@ int main(int argc, char** argv) {
             return 0;
         }
     }
+
+    if(!args.count("subcall")) {
+        std::cerr << "Error: No subcommand specified.\n";
+        std::cerr << options.help() << std::endl;
+        return 1;
+    }
+
 
     std::string subcall = args["subcall"].as<std::string>();
     std::unique_ptr<subcalls::subcall> command = create_subcall(subcall);
