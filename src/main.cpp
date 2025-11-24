@@ -73,6 +73,7 @@ int main(int argc, char** argv) {
         return 0;
     }
 
+    command->validate(subcallArgs);
     command->execute(subcallArgs);
 
 }
