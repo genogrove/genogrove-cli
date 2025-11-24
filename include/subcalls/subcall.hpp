@@ -11,14 +11,15 @@
 
 #include <cxxopts.hpp>
 
-class subcall {
-public:
-    virtual cxxopts::Options parse_args(int argc, char** argv) = 0;
-    virtual void execute(const cxxopts::ParseResult& args) = 0;
-    virtual void validate(const cxxopts::ParseResult& args) = 0;
-    virtual ~subcall() = default;
-};
-
+namespace subcalls {
+    class subcall {
+    public:
+        virtual cxxopts::Options parse_args(int argc, char** argv) = 0;
+        virtual void execute(const cxxopts::ParseResult& args) = 0;
+        virtual void validate(const cxxopts::ParseResult& args) = 0;
+        virtual ~subcall() = default;
+    };
+}
 
 
 #endif //GENOGROVE_CLI_SUBCALL_HPP
