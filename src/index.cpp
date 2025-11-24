@@ -44,7 +44,7 @@ void index::execute(const cxxopts::ParseResult& args) {
     std::unique_ptr<file_reader> reader = file_reader_factory::create(inputfile, filetype, is_gzipped);
 
     // create the grove
-    ggs::grove<gdt::interval, int> grove(args["order"].as<int>());
+    ggs::grove<ggt::interval, int> grove(args["order"].as<int>());
     file_entry entry;
 
     // stop the time
