@@ -19,19 +19,26 @@
 #include <genogrove/structure/grove/grove.hpp>
 
 // genogrove-cli
-#include <subcall/subcall.hpp>
+#include <subcalls/subcall.hpp>
 #include "file_reader.hpp"
 #include "file_reader_factory.hpp"
+#include "utility.hpp"
+
 
 // CXXopts
 #include <cxxopts.hpp>
 
-class index : public subcall {
-public:
-    cxxopts::Options parse_args(int argc, char** argv) override;
-    void execute(const cxxopts::ParseResult& args) override;
-    void validate(const cxxopts::ParseResult& args) override;
+namespace ggs = genogrove::structure;
 
+namespace subcalls {
+    class index : public subcall {
+        public:
+            cxxopts::Options parse_args(int argc, char** argv) override;
+            void execute(const cxxopts::ParseResult& args) override;
+            void validate(const cxxopts::ParseResult& args) override;
 };
+
+}
+
 
 #endif //GENOGROVE_CLI_INDEX_HPP

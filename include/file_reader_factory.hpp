@@ -22,10 +22,9 @@ using filepath = std::filesystem::path;
 
 class file_reader_factory{
     public:
-        static std::unique_ptr<file_reader> create(
-            const filepath& fpath,
-            filetype ftype,
-            bool is_gzipped);
+        static std::unique_ptr<file_reader> create(const filepath& fpath,
+                filetype ftype, bool is_gzipped);
+
 };
 
 #endif //GENOGROVE_CLI_FILE_READER_FACTORY_HPP

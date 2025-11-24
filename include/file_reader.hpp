@@ -13,13 +13,16 @@
 // genogrove
 // #include <genogrove/data_type/interval.hpp>
 
+// cli
+#include "file_entry.hpp"
+
 class file_reader {
     public:
-        virtual bool read_next(FileEntry& entry) = 0;
-        virtual bool hasNext() = 0;
-        virtual std::string getErrorMessage() = 0;
-        virtual size_t getCurrentLine() = 0;
-        virtual ~FileReader() = default;
+        virtual bool read_next(file_entry& entry) = 0;
+        virtual bool has_next() = 0;
+        virtual std::string get_error_message() = 0;
+        virtual size_t get_current_line() = 0;
+        virtual ~file_reader() = default;
 };
 
 

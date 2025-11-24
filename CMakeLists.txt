@@ -31,7 +31,7 @@ CPMAddPackage(
 CPMAddPackage(
         NAME genogrove
         GITHUB_REPOSITORY genogrove/genogrove
-        VERSION 0.0.1
+        GIT_TAG v0.3.0
 )
 
 find_package(PkgConfig REQUIRED)
