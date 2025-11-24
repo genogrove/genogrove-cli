@@ -23,8 +23,8 @@ std::unique_ptr<subcalls::subcall> create_subcall(const std::string& subcall) {
 void print_general_help(cxxopts::Options& options) {
     std::cout << options.help() << "\n";
     std::cout << "Available subcommands: \n";
-    std::cout << "\tindex:\t\tIndex an Interval File\n";
-    std::cout << "\tintersect:\tSearch for interval overlaps in the index\n";
+    std::cout << "\tidx:\t\tIndex an Interval File\n";
+    std::cout << "\tisec:\tSearch for interval overlaps in the index\n";
     std::cout << "For more details on a subcommand, use the --help option with the subcommand.\n";
 }
 

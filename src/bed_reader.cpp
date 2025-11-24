@@ -24,10 +24,10 @@ bool bed_reader::read_next(file_entry& entry) {
     }
     std::string line(str.s);
     free(str.s); // free the memory allocated by bgzf_getline
+    line_num++;
 
     // skip empty or commented lines
     if (line.empty() || line[0] == '#') {
-        line_num++;
         return read_next(entry);
     }
 
@@ -57,7 +57,6 @@ bool bed_reader::read_next(file_entry& entry) {
         entry.chrom = chrom;
         entry.interval = ggt::interval(startNum, endNum);
         entry.strand = '.';
-        line_num++;
         return true;
     } catch (std::exception &e) {
         error_message = "Failed to parse line at " + std::to_string(line_num) + ": " + line;
