@@ -4,7 +4,7 @@ std::unique_ptr<file_reader> file_reader_factory::create(const std::filesystem::
     filetype ftype, bool is_gzipped) {
     switch(ftype) {
         case filetype::BED:
-            return std::make_unique<bed_reader>(fpath, is_gzipped);
+            return std::make_unique<bed_reader>(fpath);
         default:
             return nullptr;
     }

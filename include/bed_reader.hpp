@@ -36,7 +36,7 @@ namespace ggt = genogrove::data_type;
 
 class bed_reader : public file_reader {
 public:
-    bed_reader(const std::filesystem::path& path, bool is_gzipped);
+    bed_reader(const std::filesystem::path& path);
     bool read_next(file_entry& entry) override;
     bool has_next() override;
     std::string get_error_message() override;

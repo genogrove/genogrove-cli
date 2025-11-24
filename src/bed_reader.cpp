@@ -1,6 +1,6 @@
 #include "bed_reader.hpp"
 
-bed_reader::bed_reader(const std::filesystem::path& fpath, bool is_gzipped)
+bed_reader::bed_reader(const std::filesystem::path& fpath)
     : line_num(0), bgzf_file(nullptr) {
     // note this handles both raw and gzipped files
     bgzf_file = bgzf_open(fpath.c_str(), "r"); // open file
