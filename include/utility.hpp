@@ -10,8 +10,7 @@
 #define GENOGROVE_CLI_UTILITY_HPP
 
 // Standard
-#include <iostream>
-#include <chrono>
+#include <string>
 
 namespace util {
     std::string get_time();
